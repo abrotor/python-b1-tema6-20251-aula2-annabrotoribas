@@ -76,11 +76,14 @@ Exemple:
 
 
 def read_txt_file(path: str) -> str:
-    #Write your code here
+    with open(path, "r", encoding="utf-8") as file:
+        return file.read()
+#Write your code here
     pass
 
 
 def words_counter(text: str, word: str) -> int:
+    return text.lower().split().count(word.lower())
     #Write your code here
     pass
 
