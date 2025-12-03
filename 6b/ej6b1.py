@@ -62,14 +62,24 @@ import logging
 
 def count_letters(names):
     #Write your code here
+    letter_counts = {}
+    for name in names:
+        for letter in name:
+            if letter in letter_counts:
+                letter_counts[letter] = letter_counts.get(letter) + 1
+            else:
+                letter_counts[letter] = 1
+    return letter_counts
     pass
-
 
 def create_log(names):
     #Write your code here
+    logging.basicConfig(level=logging.DEBUG, filename="production.log", force=True)
+    letter_counts = count_letters(names)
+    logging.debug(f"Letter counts: {letter_counts}")
     pass
 
 
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script
 # Si vols provar el teu codi, descomenta les línies següents i executa l'script
-# create_log(["Juan", "Pedro", "Marta"])
+create_log(["Juan", "Pedro", "Marta"])
